@@ -7,7 +7,7 @@ time.sleep(10)
 conexion = mysql.connector.connect(
     host="Soporte Tecnico",  #nombre que tendra nuestro servicio en docker-compose
     user="root",
-    password="rootpassword",
+    password="12345",
     database="soporte_tecnico"
 )
 
@@ -18,7 +18,7 @@ resultado = cursor.fetchone()
 
 total_tickets = resultado[0]
 
-#Creamos la carpeta que se compartira entre contenedores por sino existe
+#Creamos la carpeta que se compartira entre contenedores por si no existe
 os.makedirs("shared", exist_ok=True)
 
 #Generamos el archivo de reportes y escribimos sobre este
