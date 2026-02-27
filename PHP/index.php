@@ -69,9 +69,9 @@ $tickets = $consulta->fetchAll(PDO::FETCH_ASSOC);
                         <?php echo $ticket['resuelto'] ? 'Resuelto': 'Pendiente'; ?>
                     </td>
                     <td>
-                        <a href="cambiar_estado.php?id=<?php echo $ticket['id']; ?>&estado=<?php echo $ticket['resuelto']; ?>">Cambiar Estado</a>
-                        <a href="editar.php?id=<?php echo $ticket['id']; ?>">Editar</a>
-                        <a href="eliminar.php?id=<?php echo $ticket['id']; ?>" onclick="return confirm('¿Estás seguro de eliminar este ticket?')">Eliminar</a>
+                        <button><a href="cambiar_estado.php?id=<?php echo $ticket['id']; ?>&estado=<?php echo $ticket['resuelto']; ?>">Cambiar Estado</a></button>
+                        <button><a href="editar.php?id=<?php echo $ticket['id']; ?>">Editar</a></button>
+                        <button><a href="eliminar.php?id=<?php echo $ticket['id']; ?>" onclick="return confirm('¿Estás seguro de eliminar este ticket?')">Eliminar</a></button>
                     </td>
                 </tr>
                 <?php endforeach; ?>
