@@ -1,8 +1,8 @@
 <?php
-$host = "sistema"; //Cambiar al momento de implementar docker
+$host = "localhost"; //Cambiar al momento de implementar docker
 $nombreBaseDeDatos = "soporte_tecnico";
 $usuario = "root";
-$contraseña = "123456";
+$contraseña = "";
 
 try {
     $conexion = new PDO("mysql:host=$host;dbname=$nombreBaseDeDatos", $usuario, $contraseña); //Conectando a la base de datos
@@ -12,6 +12,6 @@ try {
 
 //Imprime un mensaje si hubo un error de conexion
 catch(PDOException $e){
-    echo "Error de conexion: ". $e->getMessage(); 
+    die("Error de conexion: ". $e->getMessage()); 
 }
 ?>
