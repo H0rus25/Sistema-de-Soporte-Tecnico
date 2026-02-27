@@ -1,5 +1,5 @@
 <?php
-$host = "sistema"; //Cambiar al momento de implementar docker
+$host = "sistema"; //Nombre para el docker
 $nombreBaseDeDatos = "soporte_tecnico";
 $usuario = "root";
 $contraseña = "12345";

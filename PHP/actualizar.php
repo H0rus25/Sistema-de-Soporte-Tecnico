@@ -19,5 +19,4 @@ if (!(empty($_POST['usuario'])) and !(empty($_POST['falla'])) and !(empty($_POST
     exit();
 }
 
-
 ?>

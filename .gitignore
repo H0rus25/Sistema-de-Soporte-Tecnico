@@ -1,0 +1,5 @@
+#Archivos generados
+shared/reporte.txt
+
+#Carpetas de base de datos
+db_data/*.db
