@@ -1,0 +1,41 @@
+
+
+services:
+  #Contenedor de la base de datos
+  sistema:
+    image: mysql:8.0
+    container_name: mysql_db
+    restart: always
+    environment:
+      MYSQL_DATABASE: soporte_tecnico
+      MYSQL_ROOT_PASSWORD: 12345
+    volumes:
+      - ./DB/init.sql:/docker-entrypoint-initdb.d/init.sql
+    ports:
+      - "3306:3306"
+
+  #Contenedor para el servidor web (PHP)
+  web:
+    image: php:8.2-apache
+    container_name: php_web
+    depends_on:
+      - sistema
+    volumes:
+      - ./PHP:/var/www/html
+      - ./shared:/var/www/html/shared
+    ports:
+      - "8080:80"
+    # Instalamos la extensión PDO para MySQL dentro del contenedor
+    command: >
+      sh -c "docker-php-ext-install pdo pdo_mysql && apache2-foreground"
+  
+  #Contenedor para los reportes de Python
+  reporte:
+    build:
+      context: ./Script
+      dockerfile: Dockerfile
+    container_name: python_script
+    depends_on:
+      - sistema
+    volumes:
+      - ./shared:/app/shared
