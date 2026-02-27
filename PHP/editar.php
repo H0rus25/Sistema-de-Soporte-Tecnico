@@ -23,7 +23,7 @@ if(!(empty($_GET['id']))){
 
 
         <h2>Editar Ticket</h2>
-        <form method="post" action="actualizar_ticket.php">
+        <form method="post" action="actualizar.php">
             <input type="hidden" name="id" value="<?php echo $ticket['id']; ?>">
 
             <div>
