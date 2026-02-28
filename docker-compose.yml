@@ -5,8 +5,8 @@ services:
     container_name: mysql_db
     restart: always
     environment:
-      MYSQL_DATABASE: soporte_tecnico
-      MYSQL_ROOT_PASSWORD: 12345
+      MYSQL_DATABASE: ${NAME_DATABASE}
+      MYSQL_ROOT_PASSWORD: ${PASSWORD_DATABASE}
     volumes:
       - ./DB/init.sql:/docker-entrypoint-initdb.d/init.sql
       #Para proteger los datos guardados en la DB incluso si se borra el contenedor
@@ -23,7 +23,7 @@ services:
       - "8081:80"            #Puerto para acceder a la base de datos
     environment:
       PMA_HOST: sistema
-      MYSQL_ROOT_PASSWORD: 12345
+      MYSQL_ROOT_PASSWORD: ${PASSWORD_DATABASE}
     depends_on:
       - sistema
 
