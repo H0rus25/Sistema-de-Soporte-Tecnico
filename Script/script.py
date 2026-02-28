@@ -2,7 +2,7 @@ import mysql.connector
 import time
 import os
 
-time.sleep(10)
+time.sleep(5)
 
 conexion = mysql.connector.connect(
     host="sistema",  #Nombre que tiene nuestro servicio en docker-compose

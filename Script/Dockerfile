@@ -9,4 +9,4 @@ RUN pip install mysql-connector-python
 COPY script.py .
 
 #Se ejecuta el script.py 
-CMD ["sh", "-c", "while true; do python script.py; sleep 30; done"]
+CMD ["sh", "-c", "while true; do python script.py; sleep 5; done"]

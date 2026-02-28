@@ -1,5 +1,3 @@
-
-
 services:
   #Contenedor de la base de datos
   sistema:
@@ -11,8 +9,23 @@ services:
       MYSQL_ROOT_PASSWORD: 12345
     volumes:
       - ./DB/init.sql:/docker-entrypoint-initdb.d/init.sql
+      #Para proteger los datos guardados en la DB incluso si se borra el contenedor
+      - db_data:/var/lib/mysql
     ports:
       - "3306:3306"
+
+  #Contenedor de phpMyAdmin (Para ver la tabla de la base de datos)
+  phpmyadmin:
+    image: phpmyadmin
+    container_name: phpmyadmin_web
+    restart: always
+    ports:
+      - "8081:80"            #Puerto para acceder a la base de datos
+    environment:
+      PMA_HOST: sistema
+      MYSQL_ROOT_PASSWORD: 12345
+    depends_on:
+      - sistema
 
   #Contenedor para el servidor web (PHP)
   web:
@@ -39,3 +52,7 @@ services:
       - sistema
     volumes:
       - ./shared:/app/shared
+
+#Crea un espacio de almacenamiento en la PC para proteger los datos incluso si se borra el contenedor
+volumes:
+  db_data:
