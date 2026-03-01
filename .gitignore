@@ -7,3 +7,4 @@ shared/reporte.txt
 
 #Ignora archivo de configuracion o contraseñas
 .env
+PHP/Fotos/
