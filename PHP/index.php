@@ -23,16 +23,36 @@ $perfiles = $consultaPerfiles->fetchAll(PDO::FETCH_ASSOC);
     </head>
     <body>
 
-        <h2 class="titulo">EQUIPO DE DESARROLLO</h3>
+        <h2 class="titulo-seccion">EQUIPO DE DESARROLLO</h2>
 
         <div class="perfiles">
-            <?php foreach ($perfiles as $alumno): ?>
-                <div class="tarjeta-perfil">
-                    <img src="<?php echo $alumno['foto']; ?>" alt="Foto de <?php echo $alumno['nombre']; ?>">
-                    <div class="info">
+            <?php foreach ($perfiles as $index => $alumno): ?>
+                <div class="perfil <?php echo ($index % 2 != 0) ? 'invertida' : ''; ?>">
+                    
+                    <div class="perfil-foto">
+                        <img src="<?php echo $alumno['foto']; ?>" alt="Desarrollador <?php echo $alumno['nombre']; ?>">
+                    </div>
+
+                    <div class="profesion">
+                        <span class="ocupacion">Desarrollador Full Stack</span>
                         <h3><?php echo $alumno['nombre']; ?></h3>
-                        <p><strong>Biografia:</strong> <?php echo $alumno['bio']; ?></p>
-                        <p class="habilidades"><strong>Habilidades:</strong> <?php echo $alumno['habilidades']; ?></p>
+                        
+                        <div class="bio">
+                            <h4>Sobre mí</h4>
+                            <p><?php echo $alumno['bio']; ?></p>
+                        </div>
+
+                        <div class="habilidades">
+                            <h4>Tecnologias</h4>
+                            <div class="skills">
+                                <?php 
+                                // Aqui se convierte la cadena de habilidades en un array para crear etiquetas individuales
+                                $skills = explode(',', $alumno['habilidades']);
+                                foreach($skills as $skill): ?>
+                                    <span class="skill-tag"><?php echo trim($skill); ?></span>
+                                <?php endforeach; ?>
+                            </div>
+                        </div>
                     </div>
                 </div>
             <?php endforeach; ?>
